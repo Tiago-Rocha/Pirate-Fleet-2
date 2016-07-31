@@ -58,7 +58,7 @@ struct Ship {
         self.length = length
         self.location = location
         self.isVertical = isVertical
-        self.isWooden = false
+        self.isWooden = true
         self.hitTracker = HitTracker()
     }
     init (length: Int, location: GridLocation, isVertical: Bool, isWooden: Bool) {
@@ -99,7 +99,7 @@ struct SeaMonster: PenaltyCell {
     
     init (location: GridLocation){
         self.location = location
-        self.guaranteesHit = false
+        self.guaranteesHit = true
         self.penaltyText = "You just hit a sea monster"
     }
 }

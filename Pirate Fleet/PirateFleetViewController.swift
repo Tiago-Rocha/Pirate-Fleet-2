@@ -26,7 +26,7 @@ class PirateFleetViewController: UIViewController {
     var human: HumanObject!
     var readyToPlay: Bool = false
     var gameOver: Bool = false
-            
+    
     // MARK: Lifecycle
     
     override func viewDidAppear(animated: Bool) {
@@ -100,7 +100,7 @@ class PirateFleetViewController: UIViewController {
     }
     
     // MARK: Check If Ready To Play
-
+    
     func checkReadyToPlay(numberOfMines numberOfMines: Int, numberOfSeamonsters: Int) -> ReadyState {
         switch (numberOfMines, numberOfSeamonsters) {
         case (0, 0):
@@ -141,7 +141,7 @@ extension PirateFleetViewController: GridViewDelegate {
             if human.canAttackPlayer(computer, atLocation: location) {
                 human.attackPlayer(computer, atLocation: location)
             }
-        }        
+        }
     }
 }
 
@@ -167,30 +167,30 @@ extension PirateFleetViewController: PlayerDelegate {
             } else {
                 attackedPlayer.availableMoves.append(.NormalMove)
             }
-
+            
             
             // mine penalty
-             if let mine = penaltyCell as? Mine {
+            if let mine = penaltyCell as? Mine {
                 
                 let alertMessage = (player.playerType == .Human) ? Settings.Messages.HumanHitMine : Settings.Messages.ComputerHitMine
-
-                createAlertWithTitle("Ka-boom!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
+                
+                createAlertWithTitle("Ba bam, right in da bomb!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
                     self.dismissPenaltyAlert(player)
                 })
             }
                 
-            // seamonster penalty
+                // seamonster penalty
             else if let seamonster = penaltyCell as? SeaMonster {
                 
                 let alertMessage = (player.playerType == .Human) ? Settings.Messages.HumanHitMonster : Settings.Messages.ComputerHitMonster
                 
-                createAlertWithTitle("You hit a Seamonster!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
+                createAlertWithTitle("Spau, You hit a Seamonster!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
                     self.dismissPenaltyAlert(player)
                 })
             }
         } else {
             nextMove(player)
-        }        
+        }
     }
     
     func playerDidWin(player: Player) {
