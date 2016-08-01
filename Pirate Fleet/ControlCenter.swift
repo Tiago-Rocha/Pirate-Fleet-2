@@ -17,8 +17,8 @@ struct Ship {
     let isVertical: Bool
     let isWooden: Bool
     
-
-// TODO: Add the computed property, cells.
+    
+    // TODO: Add the computed property, cells.
     var cells: [GridLocation] {
         get {
             // Hint: These two constants will come in handy
@@ -40,7 +40,7 @@ struct Ship {
             }
             return occupiedCells
         }
-
+        
     }
     
     var hitTracker: HitTracker
@@ -53,7 +53,7 @@ struct Ship {
         }
         return true
     }
-
+    
     init(length: Int, location: GridLocation, isVertical: Bool) {
         self.length = length
         self.location = location
@@ -83,7 +83,7 @@ struct Mine: PenaltyCell {
     let location: GridLocation
     let guaranteesHit: Bool
     let penaltyText: String
-
+    
     init (location: GridLocation){
         self.location = location
         self.guaranteesHit = false
@@ -118,7 +118,7 @@ class ControlCenter {
     
     func placeItemsOnGrid(human: Human) {
         
-        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true)
+        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true, isWooden: false)
         human.addShipToGrid(smallShip)
         
         let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false)
@@ -139,9 +139,6 @@ class ControlCenter {
         let mine2 = Mine(location: GridLocation(x: 3, y: 3), penaltyText: "This is the penaltyText")
         human.addMineToGrid(mine2)
         
-//        let mine3 = Mine(location: GridLocation(x: 3, y: 4), penaltyText: "This is the penaltyText", guaranteesHit: true)
-//        human.addMineToGrid(mine3)
-
         let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6))
         human.addSeamonsterToGrid(seamonster1)
         
